@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <style>
+    /* Saucer yani plate jisme chai aayegi */
+    #saucer {
+      width: 200px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid black;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 10px;
+      background-color: #f5f5f5; /* halka grey, empty plate */
+    }
+
+    /* Yeh chai/coffee ka liquid hai */
+    #liquid {
+      position: absolute;
+      bottom: 0;       /* neeche se fill hoga */
+      width: 100%;
+      height: 0;       /* start me khaali, chai nahi */
+      background-color: #c47f35; /* chai/coffee ka colour */
+      transition: height 0.5s;   /* smooth upar aayegi */
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Chai/Coffee Saucer</h2>
+
+  <div id="saucer">
+    <div id="liquid"></div>
+  </div>
+
+  <button id="fill-btn">Fill with Tea</button>
+
+  <script>
+    const fillBtn = document.getElementById("fill-btn");
+    const liquid = document.getElementById("liquid");
+
+    let filled = false;  // abhi plate khaali hai
+
+    fillBtn.addEventListener("click", () => {
+      if (!filled) {
+        // agar khaali hai, chai bhar do
+        liquid.style.height = "60%";
+        fillBtn.textContent = "Empty Saucer";
+        filled = true;
+      } else {
+        // agar bhar hui hai, chai khali kar do
+        liquid.style.height = "0";
+        fillBtn.textContent = "Fill with Tea";
+        filled = false;
+      }
+    });
+  </script>
+
+</body>
+</html>
