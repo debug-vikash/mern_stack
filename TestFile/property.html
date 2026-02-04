@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <Style>
+        body,
+        html {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Sidebar hidden state */
+        #dashboard-sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            /* Hide the sidebar off-screen */
+            width: 250px;
+            height: 100%;
+            background-color: #f4f4f4;
+            transition: left 0.3s ease-in-out;
+            /* Smooth transition */
+        }
+
+        /* Sidebar open state */
+        #dashboard-sidebar.open {
+            left: 0;
+            /* Slide the sidebar into view */
+        }
+
+        /* Basic header and button styling */
+        .dashboard-header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+        }
+
+        #menu-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            /* 200px sidebar and a flexible main area */
+            grid-template-rows: auto 1fr;
+            /* auto for header, flexible for main content */
+            grid-template-areas:
+                "header header"
+                "sidebar main";
+            height: 100vh;
+            /* Full viewport height */
+        }
+
+
+
+        .dashboard-sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .dashboard-sidebar a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 10px;
+        }
+*/
+        /* Main Content Area */
+        .dashboard-main {
+            grid-area: main;
+            padding: 20px;
+            background-color: #e9e9e9;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            /* Responsive card grid */
+            gap: 20px;
+        } 
+
+        /* Card Styling */
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </Style>
+</head>
+
+<body>
+
+
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <button id="menu-button">☰ Menu</button>
+            <h1>Dashboard Title</h1>
+        </header>
+
+        <aside class="dashboard-sidebar">
+            <nav>
+                <ul>
+                    <li><a href="#">Overview</a></li>
+                    <li><a href="#">Reports</a></li>
+                    <li><a href="#">Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="dashboard-main">
+            <div class="card">
+                <h2>Card Title 1</h2>
+                <p>Content for the first card.</p>
+            </div>
+            <div class="card">
+                <h2>Card Title 2</h2>
+                <p>Content for the second card.</p>
+            </div>
+            <div class="card">
+                <h2>Card Title 3</h2>
+                <p>Content for the third card.</p>
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>

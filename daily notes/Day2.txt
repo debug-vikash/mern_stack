@@ -1,0 +1,28 @@
+If any path start with '/' then it is "Absolute path"
+
+If there is no / then it is "Relative path"
+
+mkdir -- create new directory
+
+cd -- change directory
+
+rm -r <directoryname> -- remove directory  (-r is for recurring file)
+
+mkdir -p <directoryname/directoryname....> -- for multiple file same time
+
+cd .. -- for back 1 level
+
+cd . -- for same level
+
+cd ../.. -- back for 2 level
+
+cd - -- for return previous directory path used
+
+touch -- create empty text file
+
+ls -i  -- give information of unique id of every file
+
+ln <textfile1> <textfile2>  -- link two files // if any changes occur in file 1 then it reflect file2 autometically
+
+hidden files -- file start with ' . '
+

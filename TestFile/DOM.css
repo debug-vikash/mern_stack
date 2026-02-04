@@ -1,0 +1,29 @@
+#bulb {
+    width: 100px;
+    height: 180px;
+    background: radial-gradient(circle at 50% 20%, #ffff99, #ffcc00);
+    border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+    position: relative;
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+}
+
+#bulb::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 25%;
+    width: 50%;
+    height: 20px;
+    background: #666666;
+    border-radius: 10px;
+}
+
+#button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: rgb(184, 22, 22);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

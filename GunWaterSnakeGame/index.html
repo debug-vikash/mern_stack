@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gun Water Snake Game</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="title">Gun Water Snake Game</div>
+            <div id="links">
+                <button id="menu-btn" class="menu-icon">☰</button>
+                <ul id="link-list" class="dropdown-menu hidden">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="rules.html">Rules</a></li>
+                    <li><a href="play.html">Play</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <img src="images/background.png" alt="Background Image" id="background">
+    
+    <main>
+        <h1>🔫 Gun Water Snake Game 🐍</h1>
+
+        <div id="game-container" class="hidden">
+            <!-- Game Stats -->
+            <div id="game-stats">
+                <div class="stat-box">
+                    <h3>Round: <span id="round-number">1</span>/10</h3>
+                </div>
+                <div class="stat-box">
+                    <h3>Player Score: <span id="player-score">0</span></h3>
+                </div>
+                <div class="stat-box">
+                    <h3>Computer Score: <span id="computer-score">0</span></h3>
+                </div>
+            </div>
+
+            <!-- Player and Computer Choices -->
+            <div id="choices-container">
+                <div class="choice-box player">
+                    <h3>Your Choice</h3>
+                    <div id="player-choice-display" class="choice-display">-</div>
+                </div>
+                <div class="vs">VS</div>
+                <div class="choice-box computer">
+                    <h3>Computer Choice</h3>
+                    <div id="computer-choice-display" class="choice-display">-</div>
+                </div>
+            </div>
+
+            <!-- Round Result -->
+            <div id="round-result" class="result-box hidden">
+                <p id="result-text"></p>
+            </div>
+
+            <!-- Game Buttons -->
+            <div id="choice-buttons">
+                <button class="choice-btn" data-choice="gun">🔫 Gun</button>
+                <button class="choice-btn" data-choice="water">💧 Water</button>
+                <button class="choice-btn" data-choice="snake">🐍 Snake</button>
+            </div>
+
+            <!-- Final Result -->
+            <div id="final-result" class="final-box hidden">
+                <h2 id="final-text"></h2>
+                <button id="play-again-btn" class="btn-primary">Play Again</button>
+            </div>
+        </div>
+
+        <!-- Start Screen -->
+        <div id="start-screen">
+            <button id="start-btn" class="btn-primary btn-large">Start Game</button>
+            <button id="reset-btn" class="btn-secondary btn-large">Reset Game</button>
+        </div>
+    </main>
+</body>
+</html>
