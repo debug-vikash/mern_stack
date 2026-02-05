@@ -1,9 +1,16 @@
-import fs from 'fs';
-import path from 'path';
+// const {add, subtract}= require("./utils");
 
-const cpPath = path.join("functions", "cp.json");
+// const added = add(5, 3);
+// const subtracted = subtract(5, 3);
 
-export function getCpData() {
-  const data = fs.readFileSync(cpPath, 'utf-8');
-  return JSON.parse(data);
-}
+// console.log(`Addition: ${added}`);
+// console.log(`Subtraction: ${subtracted}`);
+
+
+// let key = {
+//   key : "add"
+// }
+
+
+const count = require("./counter");
+console.log(count);
