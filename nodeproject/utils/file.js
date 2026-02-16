@@ -29,3 +29,21 @@ fetchData
     .catch((err)=>{
     console.log(err);
 });
+
+
+const sample = async ()=>{
+    console.log("Started");
+
+    await fetch("https://jsonplaceholder.typicode.com/posts/1")
+    .then(response => response.json())
+    .then((json) => console.log(json))
+
+    console.log("Finished");
+
+};
+console.log("sample ~ started 1");
+ sample();
+ console.log("sample ~ started 2");
+
+
+
