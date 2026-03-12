@@ -2,18 +2,9 @@ const express = require('express');
 
 const app = express();
 
-app.get('/', (req, res) => {
-   res.json({
-    message: 'Hello, World!',
-    status: "200" 
-   });
-});
-
-app.get("/home", (req, res) => {
-   res.json({
-    message: 'Welcome to the Home Page!',
-    status: "200" 
-   });
+app.get("/users", (req, res) => {
+   const getuser = require('./controllers/userController');
+   getuser.getAllUsers(req, res);
 });
 
 app.listen(3000, () => {
