@@ -1,11 +1,9 @@
-const express = require('express');
+const express = require('express')
+const userRoutes = require('./routes/userRoutes')
 
-const app = express();
+const app = express()
 
-app.get("/users", (req, res) => {
-   const getuser = require('./controllers/userController');
-   getuser.getAllUsers(req, res);
-});
+app.use("/", userRoutes)
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');

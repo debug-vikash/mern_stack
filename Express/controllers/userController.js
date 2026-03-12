@@ -1,7 +1,6 @@
-const users = require('../models/userModel');
+const users = require('../modules/userModules')
 
 exports.getAllUsers = (req, res) => {
-    res.json({
-        users,
-    });
+   // console.log("Fetching all users...");
+    res.json(users);
 };
