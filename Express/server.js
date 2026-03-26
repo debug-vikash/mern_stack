@@ -2,37 +2,73 @@ const express = require('express')
 const userRoutes = require('./routes/userRoutes')
 const productRoutes = require('./routes/productRoutes')
 const authRoutes = require('./routes/authRoutes')
+const { name } = require('ejs')
 const app = express()
 
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to the API" });
 });
 
+app.set("view engine", "ejs");
+
+app.get("/homepage", (req, res) => {
+    res.render("homepage", { 
+        name: "List of students",
+        student:[
+            {name: "John Doe", age: 20},
+            {name: "Jane Smith", age: 22},
+            {name: "Alice Johnson", age: 19}
+        ] });
+});
+
+const authMiddleware = (req, res, next) => {
+
+    const authHeader = req.headers.authorization?.split(' ')[1];
+    console.log("User middleware executed", authHeader);
+
+    if (!authHeader) {
+        return res.status(401).send("Unauthorized user");
+    }
+
+    try {
+        const decoded = jwt.verify(authHeader, jwtToken);
+        req.user = decoded;
+        console.log("Decoded token:", decoded);
+
+        next();   // ✅ VERY IMPORTANT
+
+    } catch (err) {
+        return res.status(401).json({
+            message: "Invalid token"
+        });
+    }
+};
 
 
 // Custom middleware for logging requests
 // -->Part of req ,res server
 
-const authMiddleware = (req, res, next) => {
-    // Middleware logic for user authentication or other checks
-    const authHeader = req.headers.authorization?.split(' ')[1]; // Assuming Bearer token
-    console.log("User middleware executed", authHeader);
-    if(!authHeader){
-        res.send("Unauthorized user");
-    }try {
-        const decoded = jwt.verify(authHeader, jwtToken);
-        req.user = decoded; // Attach user info to the request object
-        console.log("Decoded token:", decoded);
-    } catch (err) {
-        return res.status(401).json({ message: "Invalid token" });
-    }
+// const authMiddleware = (req, res, next) => {
+//     // Middleware logic for user authentication or other checks
+//     const authHeader = req.headers.authorization?.split(' ')[1]; // Assuming Bearer token
+//     console.log("User middleware executed", authHeader);
+//     if(!authHeader){
+//         res.send("Unauthorized user");
+//     }try {
+//         const decoded = jwt.verify(authHeader, jwtToken);
+//         req.user = decoded; // Attach user info to the request object
+//         console.log("Decoded token:", decoded);
+//         next(); // Proceed to the next middleware or route handler
+//     } catch (err) {
+//         return res.status(401).json({ message: "Invalid token" });
+//     }
 
-    //If fails authentication, you can send a response like this:
-    //res.send("Unauthorized access");
+//     //If fails authentication, you can send a response like this:
+//     //res.send("Unauthorized access");
 
-    // If successful, call next() to proceed to the next middleware or route handler
-    //next();
-};
+//     // If successful, call next() to proceed to the next middleware or route handler
+//     //next();
+// };
 // app.use(authMiddleware);
 
 
