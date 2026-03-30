@@ -11,14 +11,17 @@ app.get("/", (req, res) => {
 
 app.set("view engine", "ejs");
 
+const student = {
+    header:{title: "Student Information"},
+    content: {cource: "Computer Science"},
+    footer:{createdBy: "Vikash"}
+};
+
 app.get("/homepage", (req, res) => {
     res.render("homepage", { 
-        name: "List of students",
-        student:[
-            {name: "John Doe", age: 20},
-            {name: "Jane Smith", age: 22},
-            {name: "Alice Johnson", age: 19}
-        ] });
+        collage: "GLA University",
+        ...student
+    });
 });
 
 const authMiddleware = (req, res, next) => {
@@ -35,7 +38,7 @@ const authMiddleware = (req, res, next) => {
         req.user = decoded;
         console.log("Decoded token:", decoded);
 
-        next();   // ✅ VERY IMPORTANT
+        next(); 
 
     } catch (err) {
         return res.status(401).json({
