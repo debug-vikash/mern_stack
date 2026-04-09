@@ -5,10 +5,21 @@ exports.getUsers = (req, res) => {
     res.json(users);
 };
 
-exports.getUserById = (req, res) => {
-    const id = req.params.id;
+exports.getUserById = async (req, res) => {
+    const {id} = req.params;
+    const {isActive} = req.query;
+    console.log("Active or not" , isActive);
+    filter = {_id : Number(id)};
 
-}
+    if(isActive){
+        filter["isActive"] = Boolean(isActive);
+    }
+    console.log("filter: ", filter);
+
+    const user = await userModule.findOne(filter);
+    res.json(user);
+
+};
 
 exports.addUsers = (req, res) => {
     const students = req.body;
