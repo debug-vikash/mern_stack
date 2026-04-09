@@ -20,7 +20,7 @@ const student = {
 app.get("/homepage", (req, res) => {
     res.render("homepage", { 
         collage: "GLA University",
-        ...student
+        ...student  
     });
 });
 
