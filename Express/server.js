@@ -74,6 +74,21 @@ const authMiddleware = (req, res, next) => {
 // };
 // app.use(authMiddleware);
 
+const startServer = async () => {
+    await connectDB();
+    
+    try {
+        const stats = await internalInitialize();
+        console.log(`Employee Data Created: ${stats.count} records processed.`);
+    } catch (err) {
+        console.error('Initial Tree Sync Failed:', err.message);
+    }
+
+    const PORT = process.env.PORT || 5050;
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+};
 
 app.use(express.json())
 
