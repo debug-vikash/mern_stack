@@ -13,7 +13,7 @@
 //     }
 // ];
 
-
+import mongoose from 'mongoose';
 const usersSchema = new mongoose.Schema({
     name: String,
     isActive: Boolean
@@ -31,5 +31,6 @@ usersSchema.post('saveUpdate', function() {
 
 const User = mongoose.model('User', usersSchema);
 
-module.exports = User;
+
+export default User
 

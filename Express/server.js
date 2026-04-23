@@ -4,6 +4,14 @@ const productRoutes = require('./routes/productRoutes')
 const authRoutes = require('./routes/authRoutes')
 const { name } = require('ejs')
 const app = express()
+const jwt = require('jsonwebtoken');
+const jwtToken = "your_secret_key";
+const connectDB = require('./config/db')
+const internalInitialize = require('./utils/initialTreeSync')
+const userModule = require('./modules/userModules')
+const validate = require('./MiddleWare/userMiddleWare')
+const schemavalidate = require('./validations/userValidation')
+
 
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to the API" });
@@ -91,7 +99,6 @@ const startServer = async () => {
 };
 
 app.use(express.json())
-
 app.use("/admin",authMiddleware, userRoutes)
 app.use("/", productRoutes)
 app.use("/", authRoutes)
