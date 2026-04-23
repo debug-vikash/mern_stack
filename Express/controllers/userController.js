@@ -29,3 +29,14 @@ exports.addUsers = (req, res) => {
         students: students
     });
 };
+
+exports.createUsers = async (req, res) => {
+    const {name, isActive} = req.body;
+    console.log("name: ", name, "isActive: ", isActive);
+    const newUser = new userModule({
+        name: name,
+        isActive: isActive
+    });
+    await newUser.save();
+    res.json({message: "User created successfully", user: newUser});
+}
